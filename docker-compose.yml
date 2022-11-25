@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  app:
+    container_name: kipris_auto_save
+    image: 'kipris_auto_save:songmoana'
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "9999:27017"
+    env_file: ./.env
+    environment:
+      TZ: "Asia/Seoul"
+    restart: always
