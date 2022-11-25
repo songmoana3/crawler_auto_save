@@ -3,3 +3,6 @@
 .env
 *.pyc
 __pycache__/
+*.jpg
+20220914_img/
+*.csv
