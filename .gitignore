@@ -1,0 +1,5 @@
+.gitigonore
+/venv/
+.env
+*.pyc
+__pycache__/

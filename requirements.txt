@@ -1,0 +1,4 @@
+dnspython==2.2.1
+Pillow==9.3.0
+pymongo==4.3.3
+urllib3==1.26.12
