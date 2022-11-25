@@ -1,9 +1,8 @@
-1. 키프리스에서 이미지 다운로드하는 프로젝트입니다.
+# This is made for Downloading Korean trademark Image from Kipris.
 
-사용방법
-1. Dockerfile 에서 CMD 에 날짜를 입력합니다
-예 ) 1. CMD ["python3","request.py","20220601","20220914"] 
-     2. CMD ["python3","request.py","20220318","20220914"] 
+# How to Use
 
-2. 
-
+1. Change the date in Dockerfile -> need to change this .. nn
+2. $sudo ./build_start.sh
+3. End
+4. Good

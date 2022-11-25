@@ -16,4 +16,4 @@ class Save:
         # image save
         img_source = domain_service.get_image_link(docs)
         domain_service.save_img(end, img_source)
-        print("------- * complete save CSV * -------")
+        print("------- * complete all * -------")

@@ -11,5 +11,5 @@ RUN pip install -r requirements.txt
 
 WORKDIR /app/app
 
-CMD ["python3","main.py","20220601","20220914"] 
+CMD ["python3","main.py","--start_date","20220601","--end_date","20220914"] 
 
