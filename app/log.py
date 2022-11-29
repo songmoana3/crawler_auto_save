@@ -2,7 +2,9 @@ import csv
 import os
 
 # log save 
-def log_saving(chk, **kwargs):
+def log_saving(chk,**kwargs):
+    path = os.getcwd()
+    
     header = []
     data = []
     
@@ -10,7 +12,7 @@ def log_saving(chk, **kwargs):
         header.append(k)
         data.append(v)
         
-    path = './error.csv' if chk == 'error' else './save.csv'
+    path = f'{path}/error.csv' if chk == 'error' else f'{path}/save.csv'
 
     if not os.path.isfile(path):
         with open(path, 'w', newline='') as f:

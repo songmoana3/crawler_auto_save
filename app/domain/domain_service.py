@@ -18,8 +18,10 @@ def get_appnum(start, end):
     return docs
 
 # 출원번호 csv 저장
-def save_app_csv(end, docs):
-    with open (f'{end}_applicationNumber.csv','w') as f:
+def save_app_csv(end, docs, main_path):
+    path = f'{main_path}/{end}_applicationNumber.csv'
+    print("[airflow]:: csv_saved_path : ",path)
+    with open (path,'w') as f:
         write = csv.writer(f)
         write.writerow(['applicationNumber'])
         for doc in docs:
@@ -33,15 +35,19 @@ def get_image_link(docs):
             file_name = doc['_id']
             url = doc['imageLinkInfo']['bigDrawing']
             img_source[file_name]=url
+            
+        except KeyboardInterrupt:
+                log.log_saving('error',applicationNumber=file_name, detail='KeyboardInterrupt')
         except:
             log.log_saving('error',applicationNumber=file_name, detail = 'url error')
     return img_source
 
 # 이미지 저장
-def save_img(end, img_source):
+def save_img(end, img_source, main_path):
     
     # 저장될 폴더
-    folder_name = f'./{end}_img'
+    folder_name = f'{main_path}/img/{end}_img'
+    print("[airflow]:: img_saved_path : ",folder_name)
     os.makedirs(folder_name, exist_ok=True)
 
     for idx,(file_name, url) in enumerate(img_source.items()):
@@ -52,6 +58,10 @@ def save_img(end, img_source):
                 img = Image.open(io.BytesIO(res.data))
                 img.save(f'{folder_name}/{file_name}.jpg')
                 print(f"\rapplicationNumber : {file_name} is saved. .! {idx}/{len(img_source)}",end = "\r")
+                
+            except KeyboardInterrupt:
+                log.log_saving('error',applicationNumber=file_name, detail='KeyboardInterrupt')
+                
             except:
                 log.log_saving('error',applicationNumber=file_name, detail='img_save_error')
         else:

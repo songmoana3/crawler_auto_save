@@ -1,11 +1,15 @@
+from dotenv import load_dotenv
+
 import os
 from pymongo import MongoClient
 
+load_dotenv()
+
 # DB
-MONGO_USER = os.environ['MONGO_USER']
-MONGO_PWD = os.environ['MONGO_PWD']
-MONGO_HOST = os.environ['MONGO_HOST']
-MONGO_PORT = os.environ['MONGO_PORT']
+MONGO_USER = os.environ.get("MONGO_USER")
+MONGO_PWD = os.environ.get('MONGO_PWD')
+MONGO_HOST = os.environ.get('MONGO_HOST')
+MONGO_PORT = os.environ.get('MONGO_PORT')
 
 def get_mongo_client():
     try:
