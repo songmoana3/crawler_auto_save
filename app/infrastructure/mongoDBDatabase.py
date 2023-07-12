@@ -20,7 +20,7 @@ def get_mongo_client():
     except Exception as e:
         print('DB connection Error',e)
         
-def get_collection(mongo_client, db_name='markview', collection_name='brands'):
+def get_collection(mongo_client, db_name='test', collection_name='tests'):
     try:
         db = mongo_client[db_name]
         client = db[collection_name]

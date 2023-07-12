@@ -1,12 +1,10 @@
 
-# markcloud-image-download-kr ver1.0
+# ver1.0
 
 *developer : songmoana*  
 *last modified : 22.11*  
 *contact : songmoana3@gmail.com*
 
-#### ^^*This is made for Downloading Korean trademark Image from Kipris.* ^^
-&nbsp;
 # *files required for execution*
 *  `.env` file that include DB admin info.  
 &nbsp;

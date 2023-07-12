@@ -1,20 +1,14 @@
 #!/bin/bash
 
 echo''
-echo '██╗  ██╗██╗██████╗ ██████╗ ██╗███████╗     █████╗ ██╗   ██╗████████╗ ██████╗     ███████╗ █████╗ ██╗   ██╗███████╗
-██║ ██╔╝██║██╔══██╗██╔══██╗██║██╔════╝    ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗    ██╔════╝██╔══██╗██║   ██║██╔════╝
-█████╔╝ ██║██████╔╝██████╔╝██║███████╗    ███████║██║   ██║   ██║   ██║   ██║    ███████╗███████║██║   ██║█████╗  
-██╔═██╗ ██║██╔═══╝ ██╔══██╗██║╚════██║    ██╔══██║██║   ██║   ██║   ██║   ██║    ╚════██║██╔══██║╚██╗ ██╔╝██╔══╝  
-██║  ██╗██║██║     ██║  ██║██║███████║    ██║  ██║╚██████╔╝   ██║   ╚██████╔╝    ███████║██║  ██║ ╚████╔╝ ███████╗
-╚═╝  ╚═╝╚═╝╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝    ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝     ╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝
-                                                                                                                  '
+
 while true; do
     read -p "${nl}Would you like to delete previously built docker image? (Y/n/v):${nl}(HINT: To view current images, press 'v'): " yn
     case $yn in
         [Y]* )
             echo -e "\nDeleting previous build image..."
-            docker kill $(sudo docker ps -q --filter "name=markview_autosave_songmoana")
-            docker rmi -f $(sudo docker images -q --filter "reference=markview_autosave_songmoana")
+            docker kill $(sudo docker ps -q --filter "name=autosave_songmoana")
+            docker rmi -f $(sudo docker images -q --filter "reference=autosave_songmoana")
             echo -e "\nDONE"
             break;;
         [n]* )
@@ -39,13 +33,13 @@ do
     case $opt in
         "Build Image")
             echo -e "\nCreating image...\n"
-            docker build -f Dockerfile -t markview_autosave_songmoana .
+            docker build -f Dockerfile -t autosave_songmoana .
             echo ""
             ;;
 
         "Run Server")
         echo -e "\nRunning server...\n"
-        docker run -it --name markview_autosave_songmoana --env-file=.env -v /home/mark16/workspace/src/sprint1/auto_save/:/app/ --rm -p $port:9999 markview_autosave_songmoana
+        docker run -it --name autosave_songmoana --env-file=.env -v /home/mark16/workspace/src/sprint1/auto_save/:/app/ --rm -p $port:9999 autosave_songmoana
         ;;
 
         "View Docker Images")

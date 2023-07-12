@@ -1,8 +1,8 @@
 version: '3.9'
 services:
   app:
-    container_name: kipris_auto_save
-    image: 'kipris_auto_save:songmoana'
+    container_name: auto_save
+    image: 'auto_save:songmoana'
     build:
       context: ./
       dockerfile: Dockerfile
